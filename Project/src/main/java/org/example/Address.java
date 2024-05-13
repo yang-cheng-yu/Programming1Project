@@ -46,6 +46,7 @@ public class Address {
                 for (int i = 0; i < 7; i++) {
                     char c = postalCode.charAt(i);
                     out = switch (i) {
+                        case 3 -> out && c == ' ';
                         case 0, 2, 5 -> out && Character.isAlphabetic(c);
                         default -> out && Character.isDigit(c);
                     };
