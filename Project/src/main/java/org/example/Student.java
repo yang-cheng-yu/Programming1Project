@@ -50,10 +50,13 @@ public class Student {
         }
         return false;
     }
-    
+
     public String toSimplifiedString() {
-        // TODO
-        return null;
+        return "Student{" +
+                "studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", department=" + department +
+                '}';
     }
 
     /**
@@ -64,11 +67,9 @@ public class Student {
     public String toString() {
         // TODO
         return "Student{" +
-                "studentId='" + studentId + '\'' +
-                ", studentName='" + studentName + '\'' +
+                toSimplifiedString() +
                 ", gender=" + gender +
                 ", address=" + address +
-                ", department=" + department +
                 ", registeredCourses=" + registeredCourses +
                 '}';
     }
