@@ -25,21 +25,44 @@ public class Student {
         this.department = department;
     }
 
-    public boolean registerCourse(String course) {
-        return false;
+    /**
+     * Adds inputted course to registeredCourses
+     * @param course
+     * @return status
+     */
+    public boolean registerCourse(Course course) {
+        if (registeredCourses.contains(course)) {
+            return false;
+        }
+        registeredCourses.add(course);
+        return true;
     }
 
-    public boolean dropCourse(String course) {
+    /**
+     * Removes inputted course from registeredCourses
+     * @param course
+     * @return status
+     */
+    public boolean dropCourse(Course course) {
+        if (registeredCourses.contains(course)) {
+            registeredCourses.remove(registeredCourses.indexOf(course));
+            return true;
+        }
         return false;
     }
-
+    
     public String toSimplifiedString() {
+        // TODO
         return null;
     }
 
+    /**
+     *  converts a student to a string that contains the studentId, the studentName, the gender, the address and the department, and the registeredCourses (only the courseId, the courseName, and the departmentName)
+     * @return string
+     */
     @Override
     public String toString() {
-        // TODO @ Method 5
+        // TODO
         return "Student{" +
                 "studentId='" + studentId + '\'' +
                 ", studentName='" + studentName + '\'' +
