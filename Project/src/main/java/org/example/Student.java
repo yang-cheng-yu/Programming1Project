@@ -51,6 +51,10 @@ public class Student {
         return false;
     }
 
+    /**
+     *  converts a student to a string that contains the studentId, the studentName and the department
+     * @return string
+     */
     public String toSimplifiedString() {
         return "Student{" +
                 "studentId='" + studentId + '\'' +
@@ -67,7 +71,9 @@ public class Student {
     public String toString() {
         // TODO
         return "Student{" +
-                toSimplifiedString() +
+                "studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", department=" + department +
                 ", gender=" + gender +
                 ", address=" + address +
                 ", registeredCourses=" + registeredCourses +
