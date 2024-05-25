@@ -11,18 +11,23 @@ public class Assignment {
     private ArrayList<Integer> scores;
     private static int nextId;
 
+
     /**
      * calculates the average score for one assignment
      */
     public void calcAssignmentAvg() {
-
+        int sum = 0;
+        for (int score : scores) {
+            sum += score;
+        }
+        assignmentAverage = (double) sum / scores.size();
     }
 
     /**
      * generates random scores for all students in an assignment
      */
     public void generateRandomScore() {
-        
+
     }
 
     /**
