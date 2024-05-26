@@ -24,12 +24,39 @@ public class Course {
         return sum == 1;
     }
 
+    /**
+     *  adds a student to the student list of the course, also expand the score size for each assignment of this course, and add a new null element for the finalScores.
+     * @param student
+     * @return state
+     */
     public boolean registerStudent(Student student) {
-        return false;
+        if (registeredStudents.contains(student)) {
+            return false;
+        }
+        registeredStudents.add(student);
+        for (Assignment a : assignments) {
+            a.getScores().add(0);
+        }
+        finalScores.add(null);
+        return true;
     }
 
-    public int[] calcStudentsAverage() {
-        return null;
+    /**
+     * calculates the weighted average score of a student.
+     * @return array containing weighted average scores.
+     */
+    public ArrayList<Double> calcStudentsAverage() {
+        ArrayList<Double> avgList = new ArrayList<>();
+
+        for (Student s : registeredStudents) {
+            double avg = 0;
+            int idx = registeredStudents.indexOf(s);
+            for (Assignment a : assignments) {
+                avg += a.getScores().get(idx) * a.getWeight();
+            }
+            avgList.add(avg);
+        }
+        return avgList;
     }
 
     public boolean addAssignment(String assignmentName, double weight, int maxScore) {
