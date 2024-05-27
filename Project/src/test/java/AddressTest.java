@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.example.Address;
 
 public class AddressTest {
     public void testIsPostalCodeValid1() {

@@ -33,7 +33,7 @@ public class Address {
      * @param postalCode
      * @returntrue if postal code is correct format
      */
-    private static boolean isPostalCodeValid(String postalCode) {
+    public static boolean isPostalCodeValid(String postalCode) {
         boolean out = true;
         switch (postalCode.length()) {
             case 6 -> {

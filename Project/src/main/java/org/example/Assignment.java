@@ -19,6 +19,13 @@ public class Assignment {
 
     private Course course;
 
+    public Assignment(String assignmentName, double weight, int maxScore) {
+        this.assignmentName = assignmentName;
+        this.weight = weight;
+        this.maxScore = maxScore;
+        assignmentId = String.valueOf(nextId++);
+    }
+
     public Assignment(String assignmentName, double weight, int maxScore, Course course) {
         this.assignmentName = assignmentName;
         this.weight = weight;
