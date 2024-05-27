@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 @Getter
 @Setter
@@ -16,10 +17,13 @@ public class Assignment {
     private ArrayList<Integer> scores;
     private static int nextId;
 
-    public Assignment(String assignmentName, double weight, int maxScore) {
+    private Course course;
+
+    public Assignment(String assignmentName, double weight, int maxScore, Course course) {
         this.assignmentName = assignmentName;
         this.weight = weight;
         this.maxScore = maxScore;
+        this.course = course;
         assignmentId = String.valueOf(nextId++);
     }
 
@@ -38,7 +42,18 @@ public class Assignment {
      * generates random scores for all students in an assignment
      */
     public void generateRandomScore() {
-
+        Random rand = new Random();
+        for (int i = 0; i < course.getRegisteredStudents().size(); i++) {
+            int seed = rand.nextInt(11);
+            scores.add(switch (seed) {
+                case 0 -> rand.nextInt(60);
+                case 1, 2 -> rand.nextInt(60, 70);
+                case 3, 4 -> rand.nextInt(70, 80);
+                case 5, 6, 7, 8 -> rand.nextInt(80, 90);
+                case 9, 10 -> rand.nextInt(90, 101);
+                default -> throw new IllegalStateException("Unexpected value: " + seed);
+            });
+        }
     }
 
     /**

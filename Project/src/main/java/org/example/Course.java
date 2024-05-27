@@ -1,7 +1,14 @@
 package org.example;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 
+@Getter
+@Setter
+@EqualsAndHashCode
 public class Course {
     private String courseId; // C-departmentId-twoDigitCourseId, e.g.: C-D01-01
     private String courseName;
@@ -72,15 +79,21 @@ public class Course {
                 return false;
             }
         }
-        Assignment assignment = new Assignment(assignmentName, weight, maxScore);
+        Assignment assignment = new Assignment(assignmentName, weight, maxScore, this);
         assignments.add(assignment);
         return true;
     }
 
+    /**
+     * generates random scores for each assignment and student, and calculate the final score for each student.
+     */
     public void generateScores() {
 
     }
 
+    /**
+     * displays the scores of a course in a table, with the assignment averages and student weighted average
+     */
     public void displayScores() {
 
     }
