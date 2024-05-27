@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 @Getter
 @Setter
@@ -88,7 +89,8 @@ public class Course {
      * generates random scores for each assignment and student, and calculate the final score for each student.
      */
     public void generateScores() {
-
+        finalScores = calcStudentsAverage();
+        for (Assignment a : assignments) a.generateRandomScore();
     }
 
     /**

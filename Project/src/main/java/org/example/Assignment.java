@@ -45,7 +45,7 @@ public class Assignment {
         Random rand = new Random();
         for (int i = 0; i < course.getRegisteredStudents().size(); i++) {
             int seed = rand.nextInt(11);
-            scores.add(switch (seed) {
+            scores.set(i, switch (seed) {
                 case 0 -> rand.nextInt(60);
                 case 1, 2 -> rand.nextInt(60, 70);
                 case 3, 4 -> rand.nextInt(70, 80);
