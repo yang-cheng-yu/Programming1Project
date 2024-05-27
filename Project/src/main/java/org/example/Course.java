@@ -43,7 +43,7 @@ public class Course {
 
     /**
      * calculates the weighted average score of a student.
-     * @return array containing weighted average scores.
+     * @return arraylist containing weighted average scores.
      */
     public ArrayList<Double> calcStudentsAverage() {
         ArrayList<Double> avgList = new ArrayList<>();
@@ -59,8 +59,22 @@ public class Course {
         return avgList;
     }
 
+    /**
+     * adds a new assignment to the course
+     * @param assignmentName
+     * @param weight
+     * @param maxScore
+     * @return state
+     */
     public boolean addAssignment(String assignmentName, double weight, int maxScore) {
-        return false;
+        for (Assignment a : assignments) {
+            if (a.getAssignmentName().equals(assignmentName)) {
+                return false;
+            }
+        }
+        Assignment assignment = new Assignment(assignmentName, weight, maxScore);
+        assignments.add(assignment);
+        return true;
     }
 
     public void generateScores() {

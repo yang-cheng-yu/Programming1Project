@@ -16,6 +16,12 @@ public class Assignment {
     private ArrayList<Integer> scores;
     private static int nextId;
 
+    public Assignment(String assignmentName, double weight, int maxScore) {
+        this.assignmentName = assignmentName;
+        this.weight = weight;
+        this.maxScore = maxScore;
+        assignmentId = String.valueOf(nextId++);
+    }
 
     /**
      * calculates the average score for one assignment
