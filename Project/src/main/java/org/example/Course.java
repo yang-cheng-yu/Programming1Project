@@ -20,6 +20,13 @@ public class Course {
     private ArrayList<Double> finalScores;
     private static int nextId; // indicates the next ID that will be used
 
+    public Course(String courseId, String courseName, double credits, Department department) {
+        this.courseId = courseId;
+        this.courseName = Util.toTitleCase(courseName);
+        this.credits = credits;
+        this.department = department;
+    }
+
     /**
      * checks if the sum of weights of all assignments of that course equals to 1 (100%)
      * @return true if the sum of weights of all assignments of that course equals to 1 (100%), else false

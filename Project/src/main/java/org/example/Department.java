@@ -17,7 +17,7 @@ public class Department {
     public Department(String departmentId, String departmentName) {
         if (validateDepartmentName(departmentName)) {
             this.departmentId = departmentId;
-            this.departmentName = departmentName;
+            this.departmentName = Util.toTitleCase(departmentName);
         }
     }
 

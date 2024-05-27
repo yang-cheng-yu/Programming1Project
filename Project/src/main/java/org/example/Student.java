@@ -19,7 +19,7 @@ public class Student {
     private static int nextId; // indicates the next ID that will be used
 
     public Student(String studentName, Gender gender, Address address, Department department) {
-        this.studentName = studentName;
+        this.studentName = Util.toTitleCase(studentName);
         this.gender = gender;
         this.address = address;
         this.department = department;
