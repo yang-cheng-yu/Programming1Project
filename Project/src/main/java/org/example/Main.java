@@ -10,7 +10,5 @@ public class Main {
 
         Student s1 = new Student("man", Gender.MALE, a1, d1);
         Student s2 = new Student("woman", Gender.FEMALE, a2, d2);
-
-
     }
 }
