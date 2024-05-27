@@ -56,13 +56,12 @@ public class Course {
     public ArrayList<Double> calcStudentsAverage() {
         ArrayList<Double> avgList = new ArrayList<>();
 
-        for (Student s : registeredStudents) {
-            double avg = 0;
-            int idx = registeredStudents.indexOf(s);
-            for (Assignment a : assignments) {
-                avg += a.getScores().get(idx) * a.getWeight();
+        for (Assignment a : assignments) {
+            int sum = 0;
+            for (int score : a.getScores()) {
+                sum += score;
             }
-            avgList.add(avg);
+            avgList.add((double) sum / a.getScores().size());
         }
         return avgList;
     }
@@ -89,7 +88,16 @@ public class Course {
      * generates random scores for each assignment and student, and calculate the final score for each student.
      */
     public void generateScores() {
-        finalScores = calcStudentsAverage();
+        finalScores = new ArrayList<>();
+
+        for (Student s : registeredStudents) {
+            double avg = 0;
+            int idx = registeredStudents.indexOf(s);
+            for (Assignment a : assignments) {
+                avg += a.getScores().get(idx) * a.getWeight();
+            }
+            finalScores.add(avg);
+        }
         for (Assignment a : assignments) a.generateRandomScore();
     }
 
@@ -97,7 +105,36 @@ public class Course {
      * displays the scores of a course in a table, with the assignment averages and student weighted average
      */
     public void displayScores() {
+        // Line 1
+        System.out.print("Name              ");
+        for (Assignment a : assignments) {
+            System.out.print(a.getAssignmentName() + " ");
+        }
+        System.out.println("Final Score");
 
+        //Line 2+
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            for (Assignment a : assignments) {
+                int score = a.getScores().get(i);
+                System.out.print(score);
+                // Attempt at spacing
+                for (int j = 0; j < a.getAssignmentName().length() - 2; j++) {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println(finalScores.get(i));
+        }
+
+        // Last Line
+        ArrayList<Double> avgList = calcStudentsAverage();
+        System.out.print("Average");
+        for (int i = 0; i < assignments.size(); i++) {
+            System.out.print(avgList.get(i));
+            // Attempt at spacing
+            for (int j = 0; j < assignments.get(i).getAssignmentName().length() - 2; j++) {
+                System.out.print(" ");
+            }
+        }
     }
 
     /**
